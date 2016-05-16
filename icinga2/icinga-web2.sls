@@ -39,8 +39,8 @@ icinga2-web2:
 #Configures the timezone for the 
 phpini-conf:
     cmd.run:
-        - name: "sudo sed -i.bak \"s/;date.timezone\\\ .*/date.timezone\ =\ \\\"America\\/Toronto\\\"/\" /etc/php/7.0/apache2/php.ini"
-        - user: vagrant
+        - name: "sed -i.bak \"s/;date.timezone\\\ .*/date.timezone\ =\ \\\"America\\/Toronto\\\"/\" /etc/php/7.0/apache2/php.ini"
+        - user: root
         - output_loglevel: DEBUG
     service.running:
         - name: apache2
@@ -181,6 +181,6 @@ icinga2web-dbpopulate:
         - file_mode: 777
     cmd.script:
         - name: salt://icinga2/files/setup_icinga2web.sh
-        - user: vagrant
+        - user: root
         - output_loglevel: DEBUG
 
