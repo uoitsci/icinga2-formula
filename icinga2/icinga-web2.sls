@@ -5,12 +5,12 @@ include:
 icinga2-web2-required-packages:
     pkg.installed:
         - pkgs:
-            - php5-fpm
-            - php5-pgsql
-            - libapache2-mod-php5
-            - php5-intl
-            - php5-gd
-            - php5-imagick
+            - php-fpm
+            - php-pgsql
+            - libapache2-mod-php
+            - php-intl
+            - php-gd
+            - php-imagick
 
 icinga2-web2:
     pkg.installed:
@@ -25,7 +25,6 @@ icinga2-web2:
             - icingaweb2
             - icingaweb2-module-doc
             - icingaweb2-module-monitoring
-            - icingaweb2-module-setup
     iptables.append:
         - table: filter
         - chain: INPUT
@@ -40,7 +39,7 @@ icinga2-web2:
 #Configures the timezone for the 
 phpini-conf:
     cmd.run:
-        - name: "sudo sed -i.bak \"s/;date.timezone\\\ .*/date.timezone\ =\ \\\"Europe\\/Vienna\\\"/\" /etc/php5/apache2/php.ini"
+        - name: "sudo sed -i.bak \"s/;date.timezone\\\ .*/date.timezone\ =\ \\\"America\\/Toronto\\\"/\" /etc/php/7.0/apache2/php.ini"
         - user: vagrant
         - output_loglevel: DEBUG
     service.running:
